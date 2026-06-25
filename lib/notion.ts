@@ -41,7 +41,6 @@ export interface BioData {
   avatarUrl: string | null
   openToWork: boolean
   experience: ExperienceItem[]
-  awards: AwardGroup[]
   relevantProjects: ProjectItem[]
   clients: ClientItem[]
 }
@@ -246,7 +245,6 @@ export async function getBio(): Promise<BioData | null> {
 
     const bioText = getAnyText('bio_text').split('\n').filter(Boolean)
     const capabilities = getMultiSelect('capabilities')
-    const awards = safeJSON<AwardGroup[]>(getAnyText('awards'), [])
 
     // ── Experience DB
     const experience: ExperienceItem[] = expResults.map(page => {
@@ -286,7 +284,7 @@ export async function getBio(): Promise<BioData | null> {
       }
     })
 
-    return { bioText, capabilities, avatarUrl, openToWork, experience, awards, relevantProjects, clients }
+    return { bioText, capabilities, avatarUrl, openToWork, experience, relevantProjects, clients }
   } catch (err) {
     console.error('[notion] getBio error:', err)
     return null
