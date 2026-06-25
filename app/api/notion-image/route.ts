@@ -11,41 +11,90 @@ export async function GET(request: NextRequest) {
   const rawUrl = request.nextUrl.searchParams.get('url')
 
   if (!rawUrl) {
-    return NextResponse.json({ error: 'Missing url param' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Missing url param' },
+      { status: 400 }
+    )
   }
 
   let parsed: URL
+
   try {
     parsed = new URL(rawUrl)
   } catch {
-    return NextResponse.json({ error: 'Invalid url' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Invalid url' },
+      { status: 400 }
+    )
+  }
+
+  if (!['https:', 'http:'].includes(parsed.protocol)) {
+    return NextResponse.json(
+      { error: 'Protocol not allowed' },
+      { status: 400 }
+    )
   }
 
   const allowed = ALLOWED_DOMAINS.some(
-    domain => parsed.hostname === domain || parsed.hostname.endsWith(`.${domain}`)
+    domain =>
+      parsed.hostname === domain ||
+      parsed.hostname.endsWith(`.${domain}`)
   )
 
   if (!allowed) {
-    return NextResponse.json({ error: 'Domain not allowed' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Domain not allowed' },
+      { status: 400 }
+    )
   }
 
   try {
-    const res = await fetch(rawUrl)
+    const controller = new AbortController()
+
+    const timeout = setTimeout(() => {
+      controller.abort()
+    }, 10000)
+
+    const res = await fetch(parsed.toString(), {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Next.js Image Proxy',
+      },
+    })
+
+    clearTimeout(timeout)
+
     if (!res.ok) {
-      return NextResponse.json({ error: 'Upstream error' }, { status: 502 })
+      return NextResponse.json(
+        { error: 'Upstream error' },
+        { status: 502 }
+      )
     }
 
-    const contentType = res.headers.get('content-type') ?? 'image/jpeg'
+    const contentType = res.headers.get('content-type')
+
+    if (!contentType?.startsWith('image/')) {
+      return NextResponse.json(
+        { error: 'Resource is not an image' },
+        { status: 400 }
+      )
+    }
+
     const body = await res.arrayBuffer()
 
     return new NextResponse(body, {
       headers: {
         'Content-Type': contentType,
-        'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+        'Cache-Control':
+          'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800',
       },
     })
   } catch (err) {
     console.error('[notion-image] fetch error:', err)
-    return NextResponse.json({ error: 'Failed to fetch image' }, { status: 502 })
+
+    return NextResponse.json(
+      { error: 'Failed to fetch image' },
+      { status: 502 }
+    )
   }
 }
