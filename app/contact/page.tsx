@@ -15,7 +15,6 @@ const links = [
   { label: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? '#' },
   { label: 'Behance', href: process.env.NEXT_PUBLIC_BEHANCE_URL ?? '#' },
   { label: 'Instagram', href: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? '#' },
-  { label: 'Twitter', href: process.env.NEXT_PUBLIC_TWITTER_URL ?? '#' },
 ]
 
 export default async function ContactPage() {
