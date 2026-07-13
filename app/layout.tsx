@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const interTight = Inter_Tight({
+const WorkSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
