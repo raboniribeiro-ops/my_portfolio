@@ -5,7 +5,6 @@ export function Footer() {
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL ?? ""
   const behance = process.env.NEXT_PUBLIC_BEHANCE_URL ?? ""
   const instagram = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? ""
-  const twitter = process.env.NEXT_PUBLIC_TWITTER_URL ?? ""
   const city = process.env.NEXT_PUBLIC_SITE_CITY ?? ""
   const year = new Date().getFullYear()
 
@@ -31,11 +30,6 @@ export function Footer() {
           {instagram && (
             <a href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-fg transition-colors">
               Instagram ↗
-            </a>
-          )}
-          {twitter && (
-            <a href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-fg transition-colors">
-              Twitter ↗
             </a>
           )}
         </div>
