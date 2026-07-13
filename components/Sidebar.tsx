@@ -19,7 +19,6 @@ export function Sidebar({ avatarUrl }: SidebarProps) {
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL ?? ''
   const behance  = process.env.NEXT_PUBLIC_BEHANCE_URL  ?? ''
   const instagram = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? ''
-  const twitter  = process.env.NEXT_PUBLIC_TWITTER_URL ?? ''
   const year     = new Date().getFullYear()
   const cityCode = city.slice(0, 2).toUpperCase()
 
@@ -112,19 +111,6 @@ export function Sidebar({ avatarUrl }: SidebarProps) {
               className="flex items-center justify-between px-5 py-3 text-xs text-muted hover:text-fg hover:bg-white/[0.03] transition-colors"
             >
               <span>Instagram</span>
-              <span className="text-muted/40 text-[10px]">↗</span>
-            </a>
-          </div>
-        )}
-        {twitter && (
-          <div className="border-t border-border">
-            <a
-              href={twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between px-5 py-3 text-xs text-muted hover:text-fg hover:bg-white/[0.03] transition-colors"
-            >
-              <span>Twitter</span>
               <span className="text-muted/40 text-[10px]">↗</span>
             </a>
           </div>
