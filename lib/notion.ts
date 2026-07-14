@@ -109,9 +109,11 @@ function parseProject(page: PageObjectResponse): Project | null {
     }
     
     const getUrl = (key: string): string => {
-      const p = getProp(key)
-      if (!p || p.type !== 'url') return ''
-      return typeof p.url === 'string' ? p.url : ''
+     const p = getProp(key)
+     if (!p || p.type !== 'url') return ''
+     return typeof (p as { url?: unknown }).url === 'string'
+    ? (p as { url: string }).url
+    : ''
     }
     
     }
