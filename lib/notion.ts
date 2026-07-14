@@ -116,7 +116,8 @@ function parseProject(page: PageObjectResponse): Project | null {
     const getUrl = (key: string): string => {
       const p = getProp(key)
       if (!p || p.type !== 'url') return ''
-      return p.url ?? ''
+      
+      return str((p as { url?: unknown }).url)
     }
 
     const getFiles = (key: string): string[] => {
