@@ -34,7 +34,7 @@ export function ProjectCard({ project, fillHeight = false }: ProjectCardProps) {
 
       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
         <p className="text-sm font-medium text-fe leading-tight">{project.title}</p>
-        <p className="text-[10px] text-muted mt-0.5">
+        <p className="text-[10px] text-muted fe-0.7">
           {[project.client, project.year].filter(Boolean).join(' · ')}
         </p>
       </div>
