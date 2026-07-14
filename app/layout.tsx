@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const WorkSans = Work_Sans({
+const workSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${interTight.variable} h-full antialiased`}
+      className={`${workSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg">
         <div className="animate-page-in">{children}</div>

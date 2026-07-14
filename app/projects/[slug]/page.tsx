@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const project = await getProjectBySlug(slug)
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME ?? "Portfolio"
+
   return {
     title: project ? `${project.title} — ${siteName}` : "Projeto não encontrado",
     description: project?.description,
@@ -35,6 +36,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <Header />
+
       <main className="pt-24">
         <div className="px-6 md:px-10 pb-10 flex flex-col md:flex-row md:justify-between md:items-start gap-6">
           <Link
@@ -43,19 +45,57 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           >
             ← Back
           </Link>
+
           <div className="md:text-right">
-            <h1 className="font-display text-3xl md:text-5xl font-light leading-tight">{project.title}</h1>
-            {meta && <p className="text-xs text-muted mt-2">{meta}</p>}
+            <h1 className="font-display text-3xl md:text-5xl font-light leading-tight">
+              {project.title}
+            </h1>
+
+            {meta && (
+              <p className="text-xs text-muted mt-2">
+                {meta}
+              </p>
+            )}
+
             {project.description && (
-              <p className="text-sm text-fg/70 mt-3 max-w-md md:ml-auto">{project.description}</p>
+              <p className="text-sm text-fg/70 mt-3 max-w-md md:ml-auto">
+                {project.description}
+              </p>
+            )}
+
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  mt-5
+                  md:ml-auto
+                  border
+                  border-border
+                  rounded-full
+                  px-4
+                  py-1.5
+                  text-xs
+                  hover:bg-white/5
+                  transition-colors
+                "
+              >
+                Visit Site ↗
+              </a>
             )}
           </div>
         </div>
 
         <div className="px-3 pb-16">
-          <ProjectGallery media={project.media} videoUrls={project.videoUrls} />
+          <ProjectGallery
+            media={project.media}
+            videoUrls={project.videoUrls}
+          />
         </div>
       </main>
+
       <Footer />
     </>
   )
