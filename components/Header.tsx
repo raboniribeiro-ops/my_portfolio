@@ -35,12 +35,12 @@ export function Header() {
 
       <nav className="flex items-center gap-2">
         <LayoutToggle />
-        <Link
-          href={`mailto:${contactEmail}`}
-          className="hidden md:inline-flex items-center gap-1 border border-border rounded-full px-4 py-1.5 text-xs hover:bg-white/5 transition-colors"
-        >
-          Send a message <span className="text-muted">↗</span>
-        </Link>
+      <a
+       href="tel:+551194056-2643"
+       className="hidden md:inline-flex items-center gap-1 border border-border rounded-full px-4 py-1.5 text-xs hover:bg-white/5 transition-colors"
+       >
+       Call me <span className="text-muted">↗</span>
+       </a>
         <Link
           href="/bio"
           className="inline-flex items-center border border-border rounded-full px-4 py-1.5 text-xs hover:bg-white/5 transition-colors"
