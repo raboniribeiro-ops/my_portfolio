@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${interTight.variable} h-full antialiased`}
+      className={`${workSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg">
         <div className="animate-page-in">{children}</div>
