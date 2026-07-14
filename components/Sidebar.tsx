@@ -66,10 +66,10 @@ export function Sidebar({ avatarUrl }: SidebarProps) {
       {/* CTA */}
       <div className="border-t border-border">
         <Link
-          href="/contact"
+          href="tel:+551194056-2643"
           className="flex items-center justify-between px-5 py-3 text-xs text-muted hover:text-fg hover:bg-white/[0.03] transition-colors group"
         >
-          <span>Send me a message</span>
+          <span>Call me</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-40 group-hover:opacity-80 transition-opacity">
             <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
