@@ -3,7 +3,7 @@
 :root {
   /* LIGHT MODE (padrão) */
   --bg: #ffffff;
-  --fg: #ffffff;
+  --fg: #000000;
   --muted: #666666;
   --accent: #111111;
   --border: #e5e5e5;
