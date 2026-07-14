@@ -112,6 +112,12 @@ function parseProject(page: PageObjectResponse): Project | null {
       if (!p || p.type !== 'checkbox') return false
       return p.checkbox === true
     }
+    
+    const getUrl = (key: string): string => {
+      const p = getProp(key)
+      if (!p || p.type !== 'url') return ''
+      return p.url ?? ''
+    }
 
     const getFiles = (key: string): string[] => {
       const p = getProp(key)
@@ -140,6 +146,7 @@ function parseProject(page: PageObjectResponse): Project | null {
       order: getNumber('Order'),
       published: getCheckbox('Published'),
       description: getRichText('Description'),
+      projectUrl: getUrl('Project URL'),
     }
   } catch (err) {
     console.error('[notion] parseProject error on page', page.id, err)
