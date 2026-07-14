@@ -4,6 +4,7 @@
   /* LIGHT MODE (padrão) */
   --bg: #ffffff;
   --fg: #000000;
+  --fe: #ffffff;
   --muted: #666666;
   --accent: #111111;
   --border: #e5e5e5;
@@ -13,6 +14,7 @@
 [data-theme="dark"] {
   --bg: #0a0a0a;
   --fg: #f0f0f0;
+  --fe: #000000;
   --muted: #666666;
   --accent: #f0f0f0;
   --border: #1a1a1a;
