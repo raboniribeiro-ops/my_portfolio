@@ -1,5 +1,5 @@
 import type { AwardGroup } from '@/lib/notion'
-
+// .
 export function Awards({ groups }: { groups: AwardGroup[] }) {
   if (!groups.length) return null
   return (
