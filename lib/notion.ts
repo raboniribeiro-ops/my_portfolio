@@ -100,13 +100,20 @@ function parseProject(page: PageObjectResponse): Project | null {
       if (!p || p.type !== 'number') return 0
       return typeof p.number === 'number' ? p.number : 0
     }
+    
 
     const getSelect = (key: string): string => {
       const p = getProp(key)
       if (!p || p.type !== 'select') return ''
       return str((p.select as AnyProp)?.name)
     }
-
+    
+    const getUrl = (key: string): string => {
+     const p = getProp(key)
+     if (!p || p.type !== 'url') return ''
+     return p.url ?? ''
+    }
+    
     const getCheckbox = (key: string): boolean => {
       const p = getProp(key)
       if (!p || p.type !== 'checkbox') return false
@@ -140,6 +147,7 @@ function parseProject(page: PageObjectResponse): Project | null {
       order: getNumber('Order'),
       published: getCheckbox('Published'),
       description: getRichText('Description'),
+      projectUrl: getUrl('Project URL'),
     }
   } catch (err) {
     console.error('[notion] parseProject error on page', page.id, err)
