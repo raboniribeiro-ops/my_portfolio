@@ -113,8 +113,7 @@ function parseProject(page: PageObjectResponse): Project | null {
      if (!p || p.type !== 'url') return ''
 
      return str((p as AnyProp).url)
-    }
-    
+     
     }
     
     const getCheckbox = (key: string): boolean => {
