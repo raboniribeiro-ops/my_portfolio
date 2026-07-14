@@ -121,13 +121,6 @@ function parseProject(page: PageObjectResponse): Project | null {
       if (!p || p.type !== 'checkbox') return false
       return p.checkbox === true
     }
-    
-    const getUrl = (key: string): string => {
-      const p = getProp(key)
-      if (!p || p.type !== 'url') return ''
-      
-      return str((p as { url?: unknown }).url)
-    }
 
     const getFiles = (key: string): string[] => {
       const p = getProp(key)
