@@ -14,4 +14,5 @@ export interface Project {
   order: number
   published: boolean
   description: string
+  projectUrl: string
 }
