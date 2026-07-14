@@ -149,7 +149,7 @@ function parseProject(page: PageObjectResponse): Project | null {
       order: getNumber('Order'),
       published: getCheckbox('Published'),
       description: getRichText('Description'),
-      projectUrl: getUrl('Project URL'),
+      url: getUrl('Project URL'),
     }
   } catch (err) {
     console.error('[notion] parseProject error on page', page.id, err)
