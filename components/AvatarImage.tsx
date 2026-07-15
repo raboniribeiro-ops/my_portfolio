@@ -6,7 +6,7 @@ interface AvatarImageProps {
   size?: number
 }
 
-export function AvatarImage({ src, name, size = 48 }: AvatarImageProps) {
+export function AvatarImage({ src, name, size = 72 }: AvatarImageProps) {
   const initials = name.slice(0, 2).toUpperCase()
   const px = `${size}px`
 

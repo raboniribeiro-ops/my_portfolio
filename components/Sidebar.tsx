@@ -33,9 +33,9 @@ export function Sidebar({ avatarUrl }: SidebarProps) {
 
       {/* Identidade */}
       <div className="p-5 pb-4">
-        <AvatarImage src={avatarUrl} name={name} size={48} />
-        <p className="text-sm font-medium text-fg leading-tight mt-3">{name}</p>
-        <p className="text-xs text-muted mt-0.5">{role}{city ? `, based in ${city}` : ''}</p>
+        <AvatarImage src={avatarUrl} name={name} size={72} />
+        <p className="text-lg font-medium text-fg leading-tight mt-3">{name}</p>
+        <p className="text-sm text-muted mt-0.5">{role}{city ? ` based in ${city}` : ''}</p>
       </div>
 
       {/* Info + Email */}

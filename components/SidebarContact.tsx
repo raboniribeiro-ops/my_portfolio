@@ -32,9 +32,9 @@ export function SidebarContact({ avatarUrl, openToWork }: SidebarContactProps) {
 
       {/* Identidade */}
       <div className="p-5 pb-4">
-        <AvatarImage src={avatarUrl} name={name} size={48} />
-        <p className="text-sm font-medium text-fg leading-tight mt-3">{name}</p>
-        <p className="text-xs text-muted mt-0.5">{role}{city ? `, based in ${city}` : ''}</p>
+        <AvatarImage src={avatarUrl} name={name} size={72} />
+        <p className="text-lg font-medium text-fg leading-tight mt-3">{name}</p>
+        <p className="text-sm text-muted mt-0.5">{role}{city ? ` based in ${city}` : ''}</p>
         <div className="flex items-center gap-1.5 mt-2.5">
           <span className="relative flex h-1.5 w-1.5">
             {openToWork && (

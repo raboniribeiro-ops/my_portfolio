@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </h1>
 
             {meta && (
-              <p className="text-xs text-muted mt-2">
+              <p className="text-md text-muted mt-2">
                 {meta}
               </p>
             )}
