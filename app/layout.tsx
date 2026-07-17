@@ -13,6 +13,7 @@ const siteName = process.env.NEXT_PUBLIC_SITE_NAME ?? "Portfólio";
 const siteRole = process.env.NEXT_PUBLIC_SITE_ROLE ?? "";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 const description = siteRole ? `${siteName} — ${siteRole}` : siteName;
+const openGraphImage = new URL("/og-image.webp", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -22,12 +23,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName,
-    url: "/",
+    url: siteUrl,
     title: siteName,
     description,
     images: [
       {
-        url: "/og-image.webp",
+        url: openGraphImage,
         width: 1200,
         height: 630,
         alt: siteName,
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description,
-    images: ["/og-image.webp"],
+    images: [openGraphImage],
   },
 };
 
