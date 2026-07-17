@@ -4,7 +4,7 @@ export const alt = process.env.NEXT_PUBLIC_SITE_NAME ?? "Portfolio"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-async function loadInterTight(weight: number) {
+async function loadWorkSans(weight: number) {
   const css = await fetch(
     `https://fonts.googleapis.com/css2?family=Inter+Tight:wght@${weight}&display=swap`
   ).then((res) => res.text())
@@ -20,8 +20,8 @@ export default async function Image() {
   const initial = (siteName.trim()[0] ?? "P").toUpperCase()
 
   const [regular, light] = await Promise.all([
-    loadInterTight(700),
-    loadInterTight(300),
+    loadWorkSans(700),
+    loadWorkSans(300),
   ])
 
   return new ImageResponse(
@@ -37,7 +37,7 @@ export default async function Image() {
           background:
             "linear-gradient(135deg, #0d1117 0%, #111827 44%, #171c29 100%)",
           color: "#f8fafc",
-          fontFamily: "Inter Tight, system-ui, sans-serif",
+          fontFamily: "Work Sans, system-ui, sans-serif",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
@@ -67,14 +67,14 @@ export default async function Image() {
               paddingLeft: 18,
             }}
           >
-            <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.03em" }}>
+            <div style={{ display: "flex", fontSize: 44, fontWeight: 700, letterSpacing: "-0.03em" }}>
               {siteName}
             </div>
-            {siteRole && (
-              <div style={{ marginTop: 14, fontSize: 28, fontWeight: 300, color: "#94a3b8" }}>
+            {siteRole ? (
+              <div style={{ display: "flex", marginTop: 14, fontSize: 28, fontWeight: 300, color: "#94a3b8" }}>
                 {siteRole}
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -86,13 +86,13 @@ export default async function Image() {
             gap: 16,
           }}
         >
-          <div>
-            <div style={{ fontSize: 28, fontWeight: 400, color: "#cbd5e1" }}>
-              Full-stack portfolio with clean design and strong technical storytelling.
-            </div>
+          {/* Removido o wrapper div extra e adicionado display: flex */}
+          <div style={{ display: "flex", fontSize: 28, fontWeight: 400, color: "#cbd5e1" }}>
+            Full-stack portfolio with clean design and strong technical storytelling.
           </div>
           <div
             style={{
+              display: "flex",
               padding: "18px 28px",
               borderRadius: 20,
               background: "rgba(15, 23, 42, 0.8)",
@@ -110,8 +110,8 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Inter Tight", data: regular, weight: 700, style: "normal" },
-        { name: "Inter Tight", data: light, weight: 300, style: "normal" },
+        { name: "Work Sans", data: regular, weight: 700, style: "normal" },
+        { name: "Work Sans", data: light, weight: 300, style: "normal" },
       ],
     }
   )
